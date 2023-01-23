@@ -5,9 +5,9 @@ name: pytest
 
 on:
   push:
-    branches: [ main ]
+    branches: [ hello ]
   pull_request:
-    branches: [ main ]
+    branches: [ hello ]
 
 permissions:
   contents: read
