@@ -39,4 +39,4 @@ jobs:
     - name: Deploy code
       run: |
         sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git pull origin master"
-        sshpass -p ${{ secrets.VPS_PASSWORD }} scp -r * root@206.189.104.96:/home/
+        sshpass -p ${{ secrets.VPS_PASSWORD }} scp -r * root@206.189.104.96:/home/ 
