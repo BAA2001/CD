@@ -34,5 +34,5 @@ jobs:
         fi
     - name: Deploy code
         run: |
-        ssh -i ${{ secrets.PRIVATE_KEY_PATH }} -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git pull origin master"
-        scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r * root@206.189.104.96:/home/
+          ssh -i ${{ secrets.PRIVATE_KEY_PATH }} -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git pull origin master"
+          scp -i ${{ secrets.PRIVATE_KEY_PATH }} -r * root@206.189.104.96:/home/
