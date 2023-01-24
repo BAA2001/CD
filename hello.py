@@ -1,2 +1,2 @@
 def print_hw():
-    return print("Hello Wrld", end="")
+    return print("Hello World", end="")
