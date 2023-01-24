@@ -36,7 +36,11 @@ jobs:
       run: |
         sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git init"
         sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git remote add origin git@github.com:BAA2001/CD.git"
+    - name: Create temp ssh key file
+      run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem
+      env:
+        SSH_KEY: ssh_key.pem
     - name: Deploy code
       run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" -i <(echo "${{ secrets.SSH_PRIVATE_KEY }}") root@206.189.104.96 "cd /home/ && git pull origin master"
-        sshpass -p ${{ secrets.VPS_PASSWORD }} scp -r <(echo "${{ secrets.SSH_PRIVATE_KEY }}") * root@206.189.104.96:/home/
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" -i ${{ env.SSH_KEY }} root@206.189.104.96 "cd /home/ && git pull origin master"
+        sshpass -p ${{ secrets.VPS_PASSWORD }} scp -r ${{ env.SSH_KEY }} * root@206.189.104.96:/home/
