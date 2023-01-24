@@ -32,6 +32,10 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Initialize git repository and add remote
+      run: |
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh root@206.189.104.96 "cd /home/ && git init"
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh root@206.189.104.96 "cd /home/ && git remote add origin git@github.com:BAA2001/CD.git"
     - name: Deploy code
       run: |
         sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git pull origin master"
