@@ -32,6 +32,10 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Clone repository
+      run: |
+        mkdir -p /home/CD
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git clone git@github.com:BAA2001/CD.git repo"
     - name: Deploy code
       run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/ && git clone git@github.com:BAA2001/CD.git"
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/CD && git pull origin master
