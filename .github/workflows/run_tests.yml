@@ -21,4 +21,4 @@ jobs:
         python -m pip install pytest     
     - name: Run tests
       run: | 
-        python -m pytest /CD/test_hello.py
+        python -m pytest
