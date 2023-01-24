@@ -26,9 +26,9 @@ jobs:
         python -m pytest -r CD/
     - name: Check test results
       run: |
-      if [ $? -eq 0 ]; then
-        echo "Tests passed, proceeding with deployment"
-      else
-        echo "Tests failed, skipping deployment"
-        exit 1
-      fi
+        if [ $? -eq 0 ]; then
+          echo "Tests passed, proceeding with deployment"
+        else
+          echo "Tests failed, skipping deployment"
+          exit 1
+        fi
