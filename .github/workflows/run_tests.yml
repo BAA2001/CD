@@ -23,4 +23,4 @@ jobs:
         python -m pip install pytest     
     - name: Run tests
       run: | 
-        python -m pytest -r
+        python -m pytest -r CD/
