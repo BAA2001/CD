@@ -1,5 +1,5 @@
 def print_hw():
-    print("Hello Wrld")
+    print("Hello World")
 
 
 print_hw()
