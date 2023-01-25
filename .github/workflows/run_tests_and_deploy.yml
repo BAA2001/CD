@@ -32,23 +32,10 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
-    - name: Install sshpass
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to DigitalOcean VPS
       run: |
-        sudo apt-get update
-        sudo apt-get install -y sshpass
-    - name: Create .ssh directory
-      run: |
-        mkdir ~/.ssh
-    - name: Create known_hosts
-      run: |
-        touch ~/.ssh/known_hosts
-    - name: Add ssh key
-      run: |
-        ssh-keyscan -t rsa 206.189.104.96 >> ~/.ssh/known_hosts
-        ssh-copy-id root@206.189.104.96
-    - name: Clone repository
-      run: |
-        git clone https://github.com/BAA2001/CD.git /home/CD
-    - name: Deploy code
-      run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh root@206.189.104.96 "cd /home/CD && git pull origin master" 
+        scp -r C:\Users\aboua\OneDrive\Desktop\Winc\Github\CD root@206:189:104:96:/home/
+        ssh ssh root@206.189.104.96 'mv /home/* /home/'
