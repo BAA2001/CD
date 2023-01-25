@@ -36,6 +36,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y sshpass
+    - name: Create known_hosts
+      run: |
+        touch ~/.ssh/known_hosts
     - name: Add ssh key
       run: |
         ssh-keyscan -t rsa 206.189.104.96 >> ~/.ssh/known_hosts
