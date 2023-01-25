@@ -36,6 +36,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y sshpass
+    - name: Create .ssh directory
+      run: |
+        mkdir ~/.ssh
     - name: Create known_hosts
       run: |
         touch ~/.ssh/known_hosts
