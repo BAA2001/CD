@@ -32,6 +32,10 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Install sshpass
+      run: |
+        apt-get update
+        apt-get install -y sshpass
     - name: Clone repository
       run: |
         sshpass -p ${{ secrets.VPS_PASSWORD }} root@206.189.104.96 "git clone git@github.com:BAA2001/CD.git /home/CD"
