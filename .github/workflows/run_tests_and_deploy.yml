@@ -34,7 +34,7 @@ jobs:
         fi
     - name: Clone repository
       run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "git clone git@github.com:BAA2001/CD.git /home/"
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "git clone git@github.com:BAA2001/CD.git /home/CD"
     - name: Deploy code
       run: |
         sshpass -p ${{ secrets.VPS_PASSWORD }} ssh -o "StrictHostKeyChecking no" root@206.189.104.96 "cd /home/CD && git pull origin master 
