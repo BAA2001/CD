@@ -34,11 +34,11 @@ jobs:
         fi
     - name: Install sshpass
       run: |
-        apt-get update
-        apt-get install -y sshpass
+        sudo apt-get update
+        sudo apt-get install -y sshpass
     - name: Clone repository
       run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} root@206.189.104.96 "git clone git@github.com:BAA2001/CD.git /home/CD"
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh root@206.189.104.96 "git clone git@github.com:BAA2001/CD.git /home/CD"
     - name: Deploy code
       run: |
-        sshpass -p ${{ secrets.VPS_PASSWORD }} root@206.189.104.96 "cd /home/CD && git pull origin master" 
+        sshpass -p ${{ secrets.VPS_PASSWORD }} ssh root@206.189.104.96 "cd /home/CD && git pull origin master" 
