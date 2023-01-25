@@ -32,3 +32,5 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi 
+    - name: Digital Ocean Deploy App
+      uses: jjst/action-digitalocean-deploy-app@v2
