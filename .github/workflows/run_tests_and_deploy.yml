@@ -38,6 +38,8 @@ jobs:
       run: |
         mkdir ~/.ssh
         chmod 700 ~/.ssh
+    - name: Add host key to known hosts
+      run: ssh-keyscan -H 206.189.104.96 >> ~/.ssh/known_hosts
     - name: Copy ssh key to remote server
       run: ssh-copy-id -i ssh_key.pub root@206.189.104.96
     - name: Deploy to remote server
