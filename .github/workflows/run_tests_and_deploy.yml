@@ -37,5 +37,5 @@ jobs:
         echo ${{ secrets.DEPLOY_KEY }} >> ssh_deploy_key.pem
         chmod 600 ssh_deploy_key.pem
         ssh-keyscan -t rsa root@206.189.104.96 >> ~/.ssh/known_hosts
-        ssh -i ${{ secrets.DEPLOY_KEY }} root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
-        ssh -i ${{ secrets.DEPLOY_KEY }} root@206.189.104.96 'cd /home/github/ && git pull'
+        ssh -i ssh_deploy_key.pem root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
+        ssh -i ssh_deploy_key.pem root@206.189.104.96 'cd /home/github/ && git pull'
