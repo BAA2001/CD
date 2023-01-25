@@ -32,3 +32,10 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Deploy to production
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        chmod 600 $SSH_PRIVATE_KEY
+        ssh-keyscan -t rsa root@206.189.104.96 >> ~/.ssh/known_hosts
+        ssh -i $SSH_PRIVATE_KEY root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
