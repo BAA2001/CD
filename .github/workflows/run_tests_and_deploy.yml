@@ -34,7 +34,7 @@ jobs:
         fi
     - name: Deploy to production
       env:
-        SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        SSH_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         chmod 600 "$SSH_DEPLOY_KEY"
         ssh-keyscan -t rsa root@206.189.104.96 >> ~/.ssh/known_hosts
