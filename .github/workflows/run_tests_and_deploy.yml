@@ -34,6 +34,10 @@ jobs:
         fi
     - name: Generate ssh key
       run: ssh-keygen -t rsa -f ssh_key
+    - name: Create ssh directory
+      run: |
+        mkdir ~/.ssh
+        chmod 700 ~/.ssh
     - name: Copy ssh key to remote server
       run: ssh-copy-id -i ssh_key.pub root@206.189.104.96
     - name: Deploy to remote server
