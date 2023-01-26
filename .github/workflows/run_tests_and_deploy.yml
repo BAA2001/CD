@@ -30,7 +30,7 @@ jobs:
           exit 1
         fi
   deploy:
-    name: Deploy
+    name: deploy
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
@@ -41,7 +41,7 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          Bil@DO2901D
+          sshpass -p ${{secrets.VPS_PASSWORD}}
 
 
 
