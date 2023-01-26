@@ -30,6 +30,9 @@ jobs:
           exit 1
         fi
   deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
     - name: testing server ssh connection
       uses: appleboy/ssh-action@master
       with:
