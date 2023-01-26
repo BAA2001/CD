@@ -37,8 +37,8 @@ jobs:
     - name: testing server ssh connection
       uses: appleboy/ssh-action@master
       with:
-        host: 206.189.104.96
-        username: ${{ secrets.USERNAME }}
+        host: @206.189.104.96
+        username: root
         #password: ${{secrets.VPS_PASSWORD}}
         key: ${{ secrets.PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
