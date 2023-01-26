@@ -29,7 +29,17 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
-    - name: SSH Remote Commands
-      uses: appleboy/ssh-action@v0.1.7
+  deploy:
+    - name: testing server ssh connection
+      uses: appleboy/ssh-action@master
+      with:
+        host: 206.189.104.96
+        username: root
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          Bil@DO2901D
+
+
 
         
