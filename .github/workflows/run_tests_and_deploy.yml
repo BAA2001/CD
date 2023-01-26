@@ -29,11 +29,14 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Add deploy key
+      run: echo "${{ secrets.DEPLOY_KEY }}" > /root/.ssh/deploy_key
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
     - name: Deploy to production
       run: |
-        echo "$DEPLOY_KEY" > /root/.ssh/
-        chmod 600 /root/.ssh/
+        chmod 600 /root/.ssh/deploy_key
         ssh-keyscan -t rsa root@206.189.104.96 >> /root/.ssh/known_hosts
-        ssh -i ~/ssh/deploy_keys/my_key root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
-        ssh -i ~/ssh/deploy_keys/my_key root@206.189.104.96 'cd /home/github/ && git pull'
+        ssh -i /root/.ssh/deploy_key root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
+        ssh -i /root/.ssh/deploy_key root@206.189.104.96 'cd /home/github/ && git pull'
         
