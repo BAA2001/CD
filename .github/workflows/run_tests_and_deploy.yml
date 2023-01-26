@@ -32,9 +32,9 @@ jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
+    needs: [test]
     steps:
     - name: testing server ssh connection
-      needs: [test]
       uses: appleboy/ssh-action@master
       with:
         host: 206.189.104.96
