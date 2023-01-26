@@ -30,6 +30,6 @@ jobs:
           exit 1
         fi
     - name: SSH Remote Commands
-      uses: appleboy/ssh-action@v0.1.7=
-    
+      uses: appleboy/ssh-action@v0.1.7
+
         
