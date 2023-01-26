@@ -38,6 +38,6 @@ jobs:
       run: |
         chmod 600 /home/runner/.ssh/my_key
         ssh-keyscan -t rsa root@206.189.104.96 >> /home/runner/.ssh/known_hosts
-        ssh -i /home/runner/.ssh/my_key root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
-        ssh -i /home/runner/.ssh/my_key root@206.189.104.96 'cd /home/github/ && git pull'
+        ssh -i /home/runner/.ssh/my_key 206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
+        ssh -i /home/runner/.ssh/my_key 206.189.104.96 'cd /home/github/ && git pull'
         
