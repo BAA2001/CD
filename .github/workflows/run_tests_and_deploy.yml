@@ -31,8 +31,8 @@ jobs:
         fi
     - name: Deploy to production
       run: |
-        echo "$DEPLOY_KEY" > ~/.ssh/deploy_keys/my_key
-        chmod 600 ~/.ssh/deploy_keys/my_key
+        echo "$DEPLOY_KEY" > /root/.ssh/
+        chmod 600 /root/.ssh/
         ssh-keyscan -t rsa root@206.189.104.96 >> /root/.ssh/known_hosts
         ssh -i ~/ssh/deploy_keys/my_key root@206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
         ssh -i ~/ssh/deploy_keys/my_key root@206.189.104.96 'cd /home/github/ && git pull'
