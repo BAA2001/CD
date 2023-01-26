@@ -29,6 +29,9 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+    - name: Create SSH directory
+      run: |
+        mkdir -p /home/runner/.ssh/
     - name: Add deploy key
       run: echo "$DEPLOY_KEY" > /home/runner/.ssh/my_key
     - name: Deploy to production
