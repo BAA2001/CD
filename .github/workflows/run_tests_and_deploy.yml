@@ -34,14 +34,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
+      needs: test
       uses: appleboy/ssh-action@master
       with:
         host: 206.189.104.96
-        username: root
+        username: ${{ secrets.USERNAME }}
+        #password: ${{secrets.VPS_PASSWORD}}
         key: ${{ secrets.PRIVATE_KEY }}
-        port: 22
+        port: ${{ secrets.PORT }}
         script: |
-          sshpass -p ${{secrets.VPS_PASSWORD}}
+          echo "Hello..."
 
 
 
