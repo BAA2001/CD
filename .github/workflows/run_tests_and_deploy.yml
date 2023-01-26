@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: testing server ssh connection
-      needs: test
+      needs: [test]
       uses: appleboy/ssh-action@master
       with:
         host: 206.189.104.96
