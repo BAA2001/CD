@@ -6,7 +6,7 @@ name: Run test and deploy
 on: [push]
 
 jobs:
-  test and deploy:
+  test:
 
     runs-on: ubuntu-latest
 
