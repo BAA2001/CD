@@ -30,9 +30,9 @@ jobs:
           exit 1
         fi
     - name: Add deploy key
-      uses: actions/ssh-agent@v3
+      uses: actions/setup-ssh@v1
       with:
-        ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+        ssh-key: ${{ secrets.DEPLOY_KEY }}
     - name: Deploy to production
       run: |
         echo "$DEPLOY_KEY" > ~/.ssh/deploy_keys/my_key
