@@ -29,16 +29,7 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
-    - name: Create SSH directory
-      run: |
-        mkdir -p /home/runner/.ssh/
-    - name: Add deploy key
-      run: echo "$DEPLOY_KEY" > /home/runner/.ssh/my_key
-    - name: Deploy to production
-      run: |
-        sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no 206.189.104.96 
-        chmod 600 /home/runner/.ssh/my_key
-        ssh-keyscan -t rsa 206.189.104.96 >> /home/runner/.ssh/known_hosts
-        sshpass -p "$VPS_PASSWORD" ssh -o StrictHostKeyChecking=no 206.189.104.96 'git clone https://github.com/BAA2001/CD /home/github/'
-        ssh -i /home/runner/.ssh/my_key 206.189.104.96 'cd /home/github/ && git pull'
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.7=
+    
         
