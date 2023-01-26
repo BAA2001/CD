@@ -29,10 +29,6 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
-    - name: Add deploy key
-      uses: actions/ssh-agent
-      with:
-        ssh-key: ${{ secrets.DEPLOY_KEY }}
     - name: Deploy to production
       run: |
         echo "$DEPLOY_KEY" > ~/.ssh/deploy_keys/my_key
