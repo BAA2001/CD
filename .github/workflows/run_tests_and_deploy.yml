@@ -35,7 +35,10 @@ jobs:
     runs-on: ubuntu-latest  
 
     steps:
-    - name: deploy
+    - name: run script
+      run: bash ${GITHUB_WORKSPACE}/deploy.sh
+
+    '''
       uses: appleboy/ssh-action@master
       with: 
         host: ${{secrets.SSH_HOST}} 
