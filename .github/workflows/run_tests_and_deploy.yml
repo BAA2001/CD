@@ -36,5 +36,5 @@ jobs:
 
     steps:
     - name: run script
-      run: bash deploy.sh
+      run: bash C:/Users/aboua/OneDrive/Desktop/Winc/Github/CD/deploy.sh
         
