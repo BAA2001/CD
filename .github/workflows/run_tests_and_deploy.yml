@@ -43,5 +43,5 @@ jobs:
         username: ${{secrets.USER}}
 
         script: |
-          echo "I'm in!" 
+          echo "I'm in!"  
         
