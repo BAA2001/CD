@@ -37,14 +37,4 @@ jobs:
     steps:
     - name: run script
       run: bash ${GITHUB_WORKSPACE}/deploy.sh
-
-    '''
-      uses: appleboy/ssh-action@master
-      with: 
-        host: ${{secrets.SSH_HOST}} 
-        key: ${{secrets.SSH_KEY}}
-        username: ${{secrets.USER}}
-
-        script: |
-          echo "I'm in!"
         
