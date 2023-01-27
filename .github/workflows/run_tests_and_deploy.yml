@@ -44,5 +44,5 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22 #${{ secrets.PORT }}
         script: |
-          echo "Hello..."
+          echo "Hello..." 
         
