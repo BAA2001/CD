@@ -35,6 +35,10 @@ jobs:
     runs-on: ubuntu-latest  
 
     steps:
+    - uses: actions/checkout@v3
     - name: run script
-      run: bash C:/Users/aboua/OneDrive/Desktop/Winc/Github/CD/deploy.sh
+      run: |
+        chmod +x .CD/deploy.sh
+        .CD/deploy.sh
+      shell: bash
         
