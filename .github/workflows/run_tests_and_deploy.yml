@@ -29,20 +29,20 @@ jobs:
           echo "Tests failed, skipping deployment"
           exit 1
         fi
+
   deploy:
 
     runs-on: ubuntu-latest  
 
     steps:
-    - name: testing server ssh connection
+    - name: deploy
       uses: appleboy/ssh-action@master
       with:
         debug: true 
-        host: 206.189.104.96
-        username: root #${{ secrets.USERNAME }}
-        #password: ${{secrets.VPS_PASSWORD}}
-        key: ${{ secrets.PRIVATE_KEY }}
-        port: 22 #${{ secrets.PORT }}
+        host: ${{secrets.SSH_HOST}} 
+        key: ${{secrets.SSH_KEY}}
+        username: ${{secrets.USER}}
+
         script: |
-          echo "Hello..." 
+          echo "I'm in!" 
         
