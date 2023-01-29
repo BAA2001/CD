@@ -32,13 +32,18 @@ jobs:
 
   deploy:
 
-    runs-on: ubuntu-latest  
+      deploy:
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: run script
-      run: |
-        chmod +x .CD/deploy.sh
-        .CD/deploy.sh
-      shell: bash
+      runs-on: ubuntu-latest  
+
+      steps:
+      - name: deploy
+        uses: appleboy/ssh-action@v0.1.7
+        with: 
+          host: ${{secrets.SSH_HOST}} 
+          key: ${{secrets.SSH_KEY}}
+          username: ${{secrets.USER}}
+
+          script: |
+            echo "I'm in!"
         
