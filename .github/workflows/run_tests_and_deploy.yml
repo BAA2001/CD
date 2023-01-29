@@ -31,19 +31,16 @@ jobs:
         fi
 
   deploy:
+    runs-on: ubuntu-latest  
 
-      deploy:
+    steps:
+    - name: deploy
+      uses: appleboy/ssh-action@master
+      with: 
+        host: ${{secrets.SSH_HOST}} 
+        key: ${{secrets.SSH_KEY}}
+        username: ${{secrets.USER}}
 
-      runs-on: ubuntu-latest  
-
-      steps:
-      - name: deploy
-        uses: appleboy/ssh-action@master
-        with: 
-          host: ${{secrets.SSH_HOST}} 
-          key: ${{secrets.SSH_KEY}}
-          username: ${{secrets.USER}}
-
-          script: |
-            echo "I'm in!"
+        script: |
+          echo "I'm in!"
         
