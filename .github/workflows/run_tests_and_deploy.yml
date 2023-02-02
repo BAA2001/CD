@@ -40,7 +40,8 @@ jobs:
         host: ${{secrets.SSH_HOST}} 
         key: ${{secrets.SSH_KEY}}
         username: ${{secrets.USER}}
+        port: 22
 
         script: |
-          echo "I'm in!" 
+          echo "I'm in!"
         
