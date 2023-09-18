@@ -36,13 +36,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
       - name: Deploy code to VPS
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-sync@v1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          port: 22
+          dest: /var/www/
+          args: --delete
           script: |
             # Navigate to your project directory on the VPS
             cd /var/www/
