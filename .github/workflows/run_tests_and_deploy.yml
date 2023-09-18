@@ -54,6 +54,13 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
 
+      - name: Debug SSH Key
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+
       - name: Deploy code to VPS
         uses: appleboy/ssh-action@master
         with:
