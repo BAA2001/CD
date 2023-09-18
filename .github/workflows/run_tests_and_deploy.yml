@@ -1,6 +1,9 @@
 name: Run test and deploy
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  # Replace with your branch name
 
 jobs:
   test:
@@ -33,16 +36,33 @@ jobs:
   deploy:
     runs-on: ubuntu-latest  
 
-    steps:
-    - name: deploy
-      uses: appleboy/ssh-action@master
-      with: 
-        host: ${{secrets.SSH_HOST}} 
-        key: ${{secrets.SSH_KEY}}
-        username: ${{secrets.USER}}
-        port: 22
+steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
+    - name: Deploy code to VPS
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
         script: |
-          echo "I'm in!" 
-        
-        
+          # Navigate to your project directory on the VPS
+          cd /var/www/
+
+          # Pull the latest changes from your Git repository
+          if [ -d .git ]; then
+            git pull
+          else
+            git clone https://github.com/BAA2001/CD .
+          fi
+
+          # Optionally, install dependencies or run any other commands
+          # Example:
+          # npm install
+
+          # Restart your application (replace with your own restart command)
+          # Example:
+          # pm2 restart myapp
+
+          echo "Deployment successful"
