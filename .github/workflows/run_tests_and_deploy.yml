@@ -7,39 +7,35 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10.9"
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip 
-        python -m pip install pytest     
-    - name: Run tests
-      run: | 
-        python -m pytest -r CD/
-    - name: Check test results
-      run: |
-        if [ $? -eq 0 ]; then
-          echo "Tests passed, proceeding with deployment"
-        else
-          echo "Tests failed, skipping deployment"
-          exit 1
-        fi
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10.9"
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip 
+          python -m pip install pytest     
+      - name: Run tests
+        run: | 
+          python -m pytest -r CD/
+      - name: Check test results
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "Tests passed, proceeding with deployment"
+          else
+            echo "Tests failed, skipping deployment"
+            exit 1
+          fi
 
   deploy:
     runs-on: ubuntu-latest  
-
-      steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
       - name: Deploy code to VPS
         uses: appleboy/ssh-action@master
         with:
