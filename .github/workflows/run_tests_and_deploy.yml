@@ -38,6 +38,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Set up SSh key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 159.89.31.12 >> ~/.ssh/known_hosts
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+          SSH_SERVER_IP: 159.89.31.12
+
+      - name: Debug SSH
+        run: |
+          ssh -v -i ~/.ssh/id_rsa ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+
       - name: Deploy code to VPS
         uses: appleboy/ssh-action@master
         with:
