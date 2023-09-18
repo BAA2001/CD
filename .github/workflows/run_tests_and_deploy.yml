@@ -61,4 +61,4 @@ jobs:
             # Example:
             # pm2 restart myapp
 
-            echo "Deployment successful" 
+            echo "Deployment successful"
