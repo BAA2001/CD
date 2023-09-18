@@ -3,7 +3,7 @@ name: Run test and deploy
 on:
   push:
     branches:
-      - main  # Replace with your branch name
+      - main
 
 jobs:
   test:
@@ -32,6 +32,7 @@ jobs:
           fi
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
@@ -46,7 +47,7 @@ jobs:
           ssh-keyscan 159.89.31.12 >> ~/.ssh/known_hosts
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
-          SSH_SERVER_IP: 159.89.31.12
+          SSH_SERVER_IP: ${{ secrets.SSH_HOST }}
 
       - name: Debug SSH
         run: |
