@@ -97,4 +97,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           run: |
             systemctl restart myflaskapp.service
+            echo "Restart successful"
           shell: bash
