@@ -88,3 +88,8 @@ jobs:
             # pm2 restart myapp
 
             echo "Deployment successful" 
+
+      - name: Restart Flask Application Service
+        run: |
+          sudo systemctl restart myflaskapp.service
+        shell: bash
