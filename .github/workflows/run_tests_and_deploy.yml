@@ -90,6 +90,11 @@ jobs:
             echo "Deployment successful" 
 
       - name: Restart Flask Application Service
-        run: |
-          systemctl restart myflaskapp.service
-        shell: bash
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          run: |
+            systemctl restart myflaskapp.service
+          shell: bash
