@@ -91,5 +91,5 @@ jobs:
 
       - name: Restart Flask Application Service
         run: |
-          sudo systemctl restart myflaskapp.service
+          systemctl restart myflaskapp.service
         shell: bash
